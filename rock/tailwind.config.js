@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        clamp: "clamp(1rem, 5vw, 3rem)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
