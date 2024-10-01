@@ -4,12 +4,13 @@ import React from 'react'
 import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
 import CustomProduct from '@/components/productitem/page';
 import { useRouter } from 'next/router';
+import { ImageSlider } from '@/components/image-slider';
 
 const main = () => {
   return (
     <div>
       <CoustomNavbar />
-      <div className='w-ful h-[90vh] bg-gradient-to-r from-slate-900 to-slate-700 flex'>
+      <div className='w-full h-[550px] bg-gradient-to-r from-slate-900 to-slate-700 flex'>
         <div className='w-1/2 p-10'> 
           <h1 className='bg-gradient-to-r from-slate-100 to-slate-500inline-block text-transparent bg-clip-text'><span className='flex flex-col mb-5 leading-tight text-8xl font-extrabold' > <span className='text-7xl ' >Stay Cool, </span><span>
           Play Hard </span></span><span className='text-2xl font-bold'>- Unstoppable Performance Without the Heat!</span></h1>
@@ -19,8 +20,8 @@ const main = () => {
         </div>
 
      
-        <div className='w-1/2 h-[500px] bg-contain'>
-          <img src='DSCN1806.jpg' className='w-full h-full object-contain' />
+        <div className='w-1/2 h-[500px] m-10 '>
+          <ImageSlider/>
         </div>  
       </div>  {/* hero section end */}
       {/* news and latest product */}

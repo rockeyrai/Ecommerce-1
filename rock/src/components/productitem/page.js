@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-
+import { useRouter } from 'next/navigation';  // Import useRouter
 const CustomProduct = () => {
-  
+  const router = useRouter(); 
   const list = [
     {
       title: "Orange",
@@ -72,7 +72,7 @@ const CustomProduct = () => {
             key={index} 
             isPressable 
             onPress={() => {
-              console.log(`${item.title} pressed`);
+              router.push('/product'); // Navigate to the product page
             }}
           >
             <CardBody className="overflow-visible p-5 h-72">

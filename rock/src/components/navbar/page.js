@@ -38,7 +38,7 @@ export default function CustomNavbar() {
           </div>
         </div>
         <Input
-          className="w-96"
+          className="lg:w-96 "
           placeholder="Type to search..."
           size="sm"
           startContent={<SearchIcon size={18} />}
@@ -55,15 +55,15 @@ export default function CustomNavbar() {
       {/* Sub Navbar (hide on scroll down) */}
       {showSubNav && (
         <div className=" border-t-1 border-gray-200 bg-[#AEE1EC] fixed top-16 left-0 w-full  shadow z-40 transition-transform duration-300">
-          <div className="flex ml-40 items-center text-[11px] h-6">
-            <div className="flex justify-center font-bold items-center gap-2">
+    
+            <div className="flex justify-start font-bold ml-40 items-center text-[11px] h-6 gap-2">
               <Dropdown>
                 <DropdownTrigger>
                   <p className="text-[11px] hover:underline hover:cursor-pointer w-auto bg-transparent" disableRipple>
                     Category
                   </p>
                 </DropdownTrigger>
-                <DropdownMenu
+                <DropdownMenu 
                   aria-label="Action event example"
                   onAction={(key) => alert(key)}
                 >
@@ -75,15 +75,15 @@ export default function CustomNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <p className="hover:underline hover:cursor-pointer" disableRipple>New Offer</p>
+              <p onClick={()=>alert('new offer ')} className="hover:underline hover:cursor-pointer" disableRipple>New Offer</p>
               <p className="hover:underline hover:cursor-pointer" disableRipple>Help & Support</p>
             </div>
-          </div>
+        
         </div>
       )}
 
       {/* Content below navbar */}
-      <div className="h-[88px] w-full bg-purple-800">
+      <div className="h-[88px] w-full bg-[#AEE1EC]">
         {/* Your page content goes here */}
       </div>
     </div>

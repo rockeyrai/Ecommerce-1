@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import { RiEyeFill,RiEyeCloseLine  } from "react-icons/ri";
+
 
 const AgentLogin = () => {
   const [emailPhone, setEmailPhone] = useState('');
@@ -21,8 +23,12 @@ const AgentLogin = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-        <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">Agent Login</h2>
+      <div className="bg-white  shadow-lg rounded-lg p-8 max-w-md gap-3 w-full">
+        <div className='flex w-full items-center justify-center mb-3'>
+        <img className='w-9 h-9' src='/ice-berg.png'/>
+        <h2 href="http://localhost:3000" className="text-2xl font-semibold text-gray-800 text-center">ForzeUP</h2>
+        </div>
+  
         <p className="text-center text-gray-500 mb-6">Hey, enter your details to sign in to your account</p>
         
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -61,7 +67,7 @@ const AgentLogin = () => {
                 className="absolute inset-y-0 right-0 px-4 text-gray-500 focus:outline-none"
                 aria-label={showPasscode ? "Hide passcode" : "Show passcode"}
               >
-                {showPasscode ? 'Hide' : 'Show'}
+                {showPasscode ? <RiEyeFill/> : <RiEyeCloseLine/>}
               </button>
             </div>
           </div>
@@ -81,9 +87,9 @@ const AgentLogin = () => {
         <div className="my-6 text-center text-gray-500">— Or sign in with —</div>
         
         <div className="grid grid-cols-3 gap-4">
-          <SocialButton platform="Google" logo="google-icon.svg" />
-          <SocialButton platform="Apple ID" logo="apple-icon.svg" />
-          <SocialButton platform="Facebook" logo="facebook-icon.svg" />
+          <SocialButton platform="Google" logo="google-plus.png" />
+          <SocialButton platform="Apple" logo="apple-logo.png" />
+          <SocialButton platform="Facebook" logo="facebook-circular-logo.png" />
         </div>
         
         <div className="mt-6 text-center">
