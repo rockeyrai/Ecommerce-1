@@ -65,7 +65,7 @@ const CustomProduct = () => {
   
   return (
     <div>
-      <div  className="gap-2 grid grid-cols-2 sm:grid-cols-4 p-5">
+      <div  className="gap-2 grid grid-cols-2 px-10 sm:grid-cols-4">
         {list.map((item, index) => (
           <Card 
             shadow="sm" 

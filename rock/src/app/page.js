@@ -25,8 +25,8 @@ const main = () => {
         </div>  
       </div>  {/* hero section end */}
       {/* news and latest product */}
-      <div className='flex my-4 h-[700px]'>
-          <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
+      <div className='flex my-4 h-[650px]'>
+          <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 my-auto px-8">
           <Card className="col-span-12 sm:col-span-4 h-[300px]">
             <CardHeader className="absolute z-10 top-1 flex-col !items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
@@ -111,13 +111,14 @@ const main = () => {
             </CardFooter>
           </Card>
         </div>
-        <img src='raockproj.jpg'/>
+        <img className='border h-[600px] my-auto border-black' src='raockproj.jpg'/>
       </div>
     <CustomProduct/>
     {/* last footer section */}
-    <div className='flex justify-center items-center w-full h-14 '> <button             className='border  text-xl px-4'>See More</button>
+    <div className='flex m-5 justify-center items-center w-full h-14 '>
+      <button className='border text-xl px-4'>See More</button>
     </div>
-      <div className='w-full h-96 MT-5' >
+      <div className='w-full h-96 mt-5' >
         <div  className='grid grid-cols-4 p-5 text-[15px] text-gray-500 bg-gray-800 '>
          <div>
             <h1 className='text-sm mb-2  font-semibold text-white'>Customer Care</h1>
@@ -151,7 +152,7 @@ const main = () => {
           <p>Ram , Motherboards , Processors , Desktop Casings , CPU Cooling Fans , Gaming Graphic Cards , Mouse , PSU , GPU , Hard Drive </p>
          </div>
         </div>
-        <div className='flex px-5 gap-20 mt-5'>
+        <div className='flex px-5 gap-28 mt-5'>
           <div>
             <h1 className='text-sm mb-2  font-semibold'>Payment Methods</h1>
             <div className='flex gap-x-1 aspect-3/2 contain '>

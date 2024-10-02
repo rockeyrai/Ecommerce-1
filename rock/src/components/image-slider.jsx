@@ -5,11 +5,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const images = [
   'DSCN1806.jpg',
-  '382957542_2939064836223837_5219535670689812404_n.jpg',
-  '382991992_718261946813300_2333369520472263274_n.jpg',
-  '382944501_835650344713839_6778581477853323971_n.jpg',
-  '346102857_1492293934511372_6481161323964863415_n.jpg',
-  '346113153_691800719417856_8800621009530545822_n.jpg',
+  'rockey-1.jpg',
+  'rockey-2.jpg',
+  'rockey-3.jpg',
+  'rockey-4.jpg',
+  'rockey-5.jpg',
+  'rockey-6.jpg',
+  'rockey-7.jpg',
 ]
 
 export function ImageSlider() {
@@ -34,14 +36,14 @@ export function ImageSlider() {
   }
 
   return (
-    (<div className="relative w-[400PX] h-[400PX]">
-      <div className="relative w-[400PX] h-[400PX]">
+    (<div className="relative w-[600px]  h-[450px]">
+      <div className="relative mx-auto w-[500px] h-[450px]">
         <img 
           src={images[currentImageIndex]}
           alt={`Image ${currentImageIndex + 1}`}
           className="object-cover w-full h-full aspect-3/2 rounded-lg shadow-lg"
           style={{
-            boxShadow: '0 0 50px rgba(0, 255, 255, 0.7)',
+            boxShadow: '0 0 30px rgba(0, 255, 255,1)',
             animation: 'glow 1.5s ease-in-out infinite alternate',
           }} />
       </div>
@@ -57,16 +59,6 @@ export function ImageSlider() {
         aria-label="Next image">
         <ChevronRight size={24} />
       </button>
-      <style jsx>{`
-        @keyframes glow {
-          from {
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-          }
-          to {
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.9), 0 0 30px rgba(0, 255, 255, 0.9);
-          }
-        }
-      `}</style>
     </div>)
   );
 }
