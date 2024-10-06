@@ -60,9 +60,7 @@ const chartConfig = {
 
 export function ChartComponent() {
   return (
-    <div className="h-96 w-[500px]"> 
-    
-    <Card>
+    <Card className='h-[450px] w-[600px]'>
       <CardHeader >
         <CardTitle className='flex justify-between items-center' >
         <dvi>
@@ -137,7 +135,5 @@ export function ChartComponent() {
         </ChartContainer>
       </CardContent>
     </Card>
-    
-    </div>
   );
 }
