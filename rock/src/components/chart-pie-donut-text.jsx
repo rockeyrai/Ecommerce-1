@@ -62,10 +62,10 @@ export function PieChartComponent() {
   }, [])
 
   return (
-    <div className=" h-[400px]">
 
 
-    <Card className="flex flex-col p-0">
+
+    <Card className="flex h-[400px] w-[470px] flex-col p-0">
       <div className="items-center p-5 justify-between flex  ">
           <CardTitle>Pie Chart</CardTitle>
           <DateRangePicker label=" " className="w-60 h-12 text-xs" />
@@ -118,6 +118,5 @@ export function PieChartComponent() {
         </div>
       </CardFooter>
     </Card>
-    </div>
   );
 }
