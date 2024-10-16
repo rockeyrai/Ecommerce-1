@@ -1,111 +1,82 @@
-'use client';
-import React from 'react';
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { useRouter } from 'next/navigation';  // Import useRouter
-import { Library } from 'lucide-react';
-const CustomProduct = () => {
-  const router = useRouter(); 
-  const list = [
-    {
-      title: "Orange",
-      img: "/rockey-1.jpg",
-      price: "5.50",
-      sold: 12,
-      rate: '5 star',
-      id:1
-    },
-    {
-      title: "Tangerine",
-      img: "/rockey-2.jpg",
-      price: "3.00",
-      sold: 12,
-      rate: '5 star',
-      id:2
-    },
-    {
-      title: "Raspberry",
-      img: "/rockey-3.jpg",
-      price: "10.00",
-      sold: 12,
-      rate: '5 star',
-      id:3
-    },
-    {
-      title: "Lemon",
-      img: "/rockey-4.jpg",
-      price: "5.30",
-      sold: 12,
-      rate: '5 star',
-      id:4
-    },
-    {
-      title: "Avocado",
-      img: "/rockey-5.jpg",
-      price: "15.70",
-      sold: 12,
-      rate: '5 star',
-      id:5
-    },
-    {
-      title: "Lemon 2",
-      img: "/rockey-6.jpg",
-      price: "8.00",
-      sold: 12,
-      rate: '5 star',
-      id:6
-    },
-    {
-      title: "Banana",
-      img: "/rockey-7.jpg",
-      price: "7.50",
-      sold: 12,
-      rate: '5 star',
-      id:7
-    },
-    {
-      title: "Watermelon",
-      img: "/rockey-8.jpg",
-      price: "12.20",
-      sold: 12,
-      rate: '5 star',
-      id:8
-    },
-  ];
-  
-  return (
-    <div>
-      <div  className="gap-2 grid grid-cols-2 px-10 sm:grid-cols-4">
-        {list.map((item, index) => (
-          <Card 
-            shadow="sm" 
-            key={index} 
-            isPressable 
-            onPress={() => {
-              router.push(`/product/${list.id} `); // Navigate to the product page
-            }}
-          >
-            <CardBody className="overflow-visible p-5 h-72">
-              <Image
-                shadow="sm"
-                radius="lg"
-                width="100%"
-                height="250px"
-                alt={item.title}
-                className="w-full object-cover h-[140px]"
-                src={item.img}
-              />
-            </CardBody>
-            <CardFooter className="text-small items-start flex flex-col">
-              <b>{item.title}</b>
-              <p>Rs. {item.price}</p>
-              <p>Sold: {item.sold}</p>
-              <p>{item.rate}</p>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-};
+'use client'
+import { Card, CardBody, CardFooter } from '@nextui-org/card'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import React from 'react'
 
-export default CustomProduct;
+const ProductList = () => {
+    const [product, setProduct] = useState([]);
+    const [more, setMore] = useState(8);
+    const [loading, setLoading] = useState(true);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                let response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=0&limit=${more}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                let data = await response.json();
+                setProduct(data);
+            } catch (error) {
+                console.error("Failed to fetch products:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, [more]);
+
+    const showmore = () => {
+      setMore(more === 16 ? 8 : 16);
+    };
+
+    const handleCardClick = (id) => {
+      console.log("Navigating to product with ID:", id); // Log the ID for debugging
+      router.push(`/product/${id}`);
+  };
+  
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+      <div>
+        <div className="px-10 gap-[30px] w-full mt-5 bg-fuchsia-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {product.map((item, index) => (
+    <div key={index} onClick={() => handleCardClick(item.id)} className="cursor-pointer">
+        <Card className='transition-all duration-600 transform hover:translate-y-[-10px] hover:shadow-lg' shadow="sm">
+        <CardBody className="overflow-visible p-0">
+        {console.log("Image URL:", item.images && item.images.length > 0 ? item.images[0] : "/placeholder.jpg")}
+    <Image
+        shadow="sm"
+        radius="lg"
+        width={500}
+        height={250}
+        alt={item.title}
+        className="w-full object-cover h-[250px]"
+        src={item.images && item.images.length > 0 ? item.images[0].replace(/[\[\]"]/g, '') : "/placeholder.jpg"} // Clean the URL
+        />
+</CardBody>
+
+            <CardFooter className="text-small justify-between">
+                <b>{item.title}</b>
+                <p className="text-default-500">${item.price}</p>
+            </CardFooter>
+        </Card>
+    </div>
+))}
+
+        </div>
+        <div className='flex mx-auto justify-center items-center w-full h-14'>
+          <button onClick={showmore} className='border text-xl px-4'>
+            {more === 16 ? "Show Less" : "See More"}
+          </button>
+        </div>
+      </div>
+    );
+}
+
+export default ProductList;
