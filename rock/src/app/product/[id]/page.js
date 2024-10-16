@@ -13,7 +13,15 @@ const Product = () => {
   const { id } = useParams(); // Use useParams to get the dynamic route parameter
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const[noItem,setNoItem] = useState(1)
+  
+  const numberOfProduct = (nums) => {
+    if (nums === '+' && noItem < 4) {
+      setNoItem((prevNoItem) => prevNoItem + 1);
+    } else if (nums === '-' && noItem > 1) {
+      setNoItem((prevNoItem) => prevNoItem - 1);
+    }
+  }
 
 useEffect(() => {
   const fetchProducts = async () => {
